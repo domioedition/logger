@@ -1,6 +1,6 @@
 <?php
 
-namespace Domioedition\Logger;
+namespace Domioedition\Logger\Storage;
 
 
 class FileStorage
@@ -12,9 +12,9 @@ class FileStorage
         $this->filename = $filename;
     }
 
-    public function store($message)
+    public function store($eventType, $message)
     {
-        $message = time() . "|" . $message . "\n";
+        $message = time() . "|" . $eventType . "|" . $message . "\n";
         file_put_contents($this->filename, $message, FILE_APPEND);
     }
 

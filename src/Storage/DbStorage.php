@@ -1,6 +1,6 @@
 <?php
 
-namespace Domioedition\Logger;
+namespace Domioedition\Logger\Storage;
 
 
 class DbStorage
@@ -10,12 +10,13 @@ class DbStorage
         //setting connection to db
     }
 
-    public function store($message)
+    public function store($eventType, $message)
     {
         //todo
         //if connection success store log message in database
         $sql = "INSERT INTO .....";
         $message = time() . "|" . $message . "\n";
+        // echo "$eventType\nWriting to DB $sql\n$message\n";
     }
 
 }
