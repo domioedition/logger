@@ -1,23 +1,32 @@
 <?php
 
-use Domioedition\Logger\Logger;
-use Domioedition\Logger\Storage\DbStorage;
+use Domioedition\Logger\SimpleLogger;
+use Domioedition\Logger\Storage\DB\MySQLiStorage;
+use Domioedition\Logger\Storage\DB\OracleStorage;
 use Domioedition\Logger\Storage\FileStorage;
 
 require 'vendor/autoload.php';
 
-//Log message into file
-$logger = new Logger(new FileStorage("logger.txt"));
-$logger->createEvent(8, "Record added.");
-$logger->createEvent(8, "Record added.");
-$logger->createEvent(8, "Record added.");
-$logger->createEvent(1, "Remote service is not available." . "|"  . __LINE__ . "|" . __FILE__);
-$logger->createEvent(1, "Soap server is not available.");
-$logger->createEvent(1, "DNS servers are down");
-$logger->createEvent(2, "Something goes wrong.");
+echo "<pre>";
 
 
+//Simple logger - file storage
+$simple_logger = new SimpleLogger(new FileStorage("simple_log.txt"));
+$simple_logger->info("Script processing started!");
+$simple_logger->warn("Warning. Alarm!");
+$simple_logger->error("Error!");
+$simple_logger->debug("Debug information!");
 
-//Log message into DB
-$logger = new Logger(new DbStorage());
-$logger->createEvent(8, "Record added.");
+//Simple logger - Mysqli storage
+$simple_logger = new SimpleLogger(new MySQLiStorage());
+$simple_logger->info("Script processing started!");
+$simple_logger->warn("Warning. Alarm!");
+$simple_logger->error("Error!");
+$simple_logger->debug("Debug information!");
+
+//Simple logger - Oracle storage
+$simple_logger = new SimpleLogger(new OracleStorage());
+$simple_logger->info("Script processing started!");
+$simple_logger->warn("Warning. Alarm!");
+$simple_logger->error("Error!");
+$simple_logger->debug("Debug information!");

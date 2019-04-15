@@ -3,13 +3,13 @@
 namespace Domioedition\Logger;
 
 interface LoggerInterface{
-    const Error = 1;
-    const Warning = 2;
-    const Debug = 4;
-    const Succes = 8;
-    public function createEvent($eventType, $message);
-    // public function error();
-    // public function warning();
-    // public function debug();
-    // public function success();
+    const Info = "Info";
+    const Debug = "Debug";
+    const Warn = "Warn";
+    const Error = "Error";
+    public function info($msg);
+    public function debug($msg);
+    public function warn($msg);
+    public function error($msg);
+    // public function log($level, $msg); //todo e need this declaratio or no?
 }
