@@ -2,12 +2,16 @@
 
 namespace Domioedition\Logger;
 
+use Domioedition\Logger\Storage\StorageInterface;
+
 /**
  * Classsimple logger
  */
 class SimpleLogger implements LoggerInterface
 {
-    public function __construct($storage)
+    private $storage;
+    
+    public function __construct(StorageInterface $storage)
     {
         $this->storage = $storage;
     }
