@@ -13,22 +13,28 @@ echo "<pre>";
 
 
 //Simple logger - file storage
-$simple_logger = new SimpleLogger(new FileStorage("simple_log.txt"), new FullMessageFormat());
+$simple_logger = new SimpleLogger("File logger");
+$simple_logger->addHandler(new FileStorage("simple_log.txt"), new FullMessageFormat());
 $simple_logger->info("Script processing started!");
 $simple_logger->warn("Warning. Alarm!");
 $simple_logger->error("Error!");
 $simple_logger->debug("Debug information!");
 
-//Simple logger - Mysqli storage
-$simple_logger = new SimpleLogger(new MySQLiStorage(), new DefaultMessageFormat());
-$simple_logger->info("Script processing started!");
-$simple_logger->warn("Warning. Alarm!");
-$simple_logger->error("Error!");
-$simple_logger->debug("Debug information!");
 
-//Simple logger - Oracle storage
-$simple_logger = new SimpleLogger(new OracleStorage(), new FullMessageFormat());
-$simple_logger->info("Script processing started!");
-$simple_logger->warn("Warning. Alarm!");
-$simple_logger->error("Error!");
-$simple_logger->debug("Debug information!");
+//print_r($simple_logger->getLevels());
+
+
+//
+////Simple logger - Mysqli storage
+//$simple_logger = new SimpleLogger(new MySQLiStorage(), new DefaultMessageFormat());
+//$simple_logger->info("Script processing started!");
+//$simple_logger->warn("Warning. Alarm!");
+//$simple_logger->error("Error!");
+//$simple_logger->debug("Debug information!");
+//
+////Simple logger - Oracle storage
+//$simple_logger = new SimpleLogger(new OracleStorage(), new FullMessageFormat());
+//$simple_logger->info("Script processing started!");
+//$simple_logger->warn("Warning. Alarm!");
+//$simple_logger->error("Error!");
+//$simple_logger->debug("Debug information!");

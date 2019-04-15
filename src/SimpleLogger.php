@@ -9,33 +9,56 @@ use Domioedition\Logger\Storage\StorageInterface;
  */
 class SimpleLogger implements LoggerInterface
 {
+    private $name;
     private $storage;
     private $format;
 
-    public function __construct(StorageInterface $storage, MessageFormat $format)
+    public const DEBUG = 1;
+    public const INFO = 2;
+    public const WARNING = 4;
+    public const ERROR = 8;
+
+    protected static $levels = [
+        self::DEBUG => 'DEBUG',
+        self::INFO => 'INFO',
+        self::WARNING => 'WARNING',
+        self::ERROR => 'ERROR',
+    ];
+
+    public function __construct($name)
+    {
+        $this->name = $name;
+    }
+
+    public function addHandler(StorageInterface $storage, MessageFormat $format)
     {
         $this->storage = $storage;
         $this->format = $format;
     }
 
-    public function error($message)
+    public function getLevels()
     {
-        $this->log(LoggerInterface::Error, $message);
-    }
-
-    public function warn($message)
-    {
-        $this->log(LoggerInterface::Warn, $message);
+        return self::$levels;
     }
 
     public function debug($message)
     {
-        $this->log(LoggerInterface::Debug, $message);
+        $this->log(SELF::DEBUG, $message);
     }
 
     public function info($message)
     {
-        $this->log(LoggerInterface::Info, $message);
+        $this->log(SELF::INFO, $message);
+    }
+
+    public function warn($message)
+    {
+        $this->log(self::WARNING, $message);
+    }
+
+    public function error($message)
+    {
+        $this->log(self::ERROR, $message);
     }
 
     private function log($level, $message)
