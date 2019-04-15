@@ -29,7 +29,7 @@ class MySQLiStorage implements StorageInterface{
 
     public function store($message)
     {
-        $sql = "INSERT INTO logger (`message`) VALUES ('$message')";
+        $sql = "INSERT INTO t_logger_list (`message`) VALUES ('$message')";
 
         if ($this->conn->query($sql) === TRUE) {
             echo "New record:\n{$message}created successfully\n\n";
