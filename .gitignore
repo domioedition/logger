@@ -2,3 +2,5 @@ vendor/
 logger.txt
 adminer.php
 simple_log.txt
+.idea/
+.gitignore

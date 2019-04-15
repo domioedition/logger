@@ -10,10 +10,12 @@ use Domioedition\Logger\Storage\StorageInterface;
 class SimpleLogger implements LoggerInterface
 {
     private $storage;
-    
-    public function __construct(StorageInterface $storage)
+    private $format;
+
+    public function __construct(StorageInterface $storage, MessageFormat $format)
     {
         $this->storage = $storage;
+        $this->format = $format;
     }
 
     public function error($message)
@@ -38,7 +40,6 @@ class SimpleLogger implements LoggerInterface
 
     private function log($level, $message)
     {
-        $final_message = date("Y-m-d H:i:s", time()) . " - " . $level . " - " . $message . "\n";
-        $this->storage->store($final_message);
+        $this->storage->store($this->format->createMessage($level, $message));
     }
 }
