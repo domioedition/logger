@@ -3,7 +3,6 @@
 
 namespace Domioedition\Logger;
 
-
 class FullMessageFormat implements MessageFormat
 {
     public function createMessage($level, $message)

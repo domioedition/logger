@@ -2,7 +2,8 @@
 
 namespace Domioedition\Logger;
 
-interface LoggerInterface{
+interface LoggerInterface
+{
     public function info($msg);
     public function debug($msg);
     public function warn($msg);

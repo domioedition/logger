@@ -3,6 +3,7 @@
 
 namespace Domioedition\Logger\Storage;
 
-interface StorageInterface{
+interface StorageInterface
+{
     public function store($message);
 }

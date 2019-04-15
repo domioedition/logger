@@ -5,7 +5,8 @@ namespace Domioedition\Logger\Storage\DB;
 
 use Domioedition\Logger\Storage\StorageInterface;
 
-class MySQLiStorage implements StorageInterface{
+class MySQLiStorage implements StorageInterface
+{
     private $conn;
 
     public function __construct()
@@ -22,16 +23,15 @@ class MySQLiStorage implements StorageInterface{
         // Check connection
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
-        } 
+        }
         // echo "Connected successfully";
-
     }
 
     public function store($message)
     {
         $sql = "INSERT INTO t_logger_list (`message`) VALUES ('$message')";
 
-        if ($this->conn->query($sql) === TRUE) {
+        if ($this->conn->query($sql) === true) {
             echo "New record:\n{$message}created successfully\n\n";
         } else {
             echo "Error: " . $sql . "<br>" . $this->conn->error;

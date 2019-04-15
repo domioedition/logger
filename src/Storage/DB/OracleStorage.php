@@ -5,14 +5,13 @@ namespace Domioedition\Logger\Storage\DB;
 
 use Domioedition\Logger\Storage\StorageInterface;
 
-class OracleStorage implements StorageInterface{
-
+class OracleStorage implements StorageInterface
+{
     private $conn;
 
     public function __construct()
     {
         //Connection to Oracle DB
-
     }
 
     public function store($message)
@@ -25,6 +24,4 @@ class OracleStorage implements StorageInterface{
     {
         //Close Oracle Db connection, Clear memory
     }
-
-
 }
