@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Domioedition\Logger;
+namespace Domioedition\Logger\Format;
 
 class DefaultMessageFormat implements MessageFormat
 {

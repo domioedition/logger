@@ -1,9 +1,8 @@
 <?php
 
 
-namespace Domioedition\Logger\Storage\DB;
+namespace Domioedition\Logger\Storage;
 
-use Domioedition\Logger\Storage\StorageInterface;
 
 class MySQLiStorage implements StorageInterface
 {
